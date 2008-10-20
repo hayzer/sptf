@@ -28,4 +28,5 @@ sub does_file_exists {
 	(-e $file) ? 0 : 1;
 }
 
+1;
 

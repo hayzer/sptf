@@ -363,7 +363,7 @@ my $presenter = sub {
 			#  Don't print first element which usually 
 			#  is a index name.
 			#---------------------------------------------------------------------------
-			my $tmp = join ' ', @_[0..$#_];
+			my $tmp = join ' ', @_[1..$#_];
 			$text  .= $tmp . "\n";
 			return "$text";
 		}
