@@ -1,0 +1,21 @@
+---
+allowfailures: ~
+author: Thomas
+configuration:
+continuity: 0
+date: Sat Oct 18 23:28:15 IST 2008
+description: |
+  Sanity tests goes here.
+id: 1
+postreq: ~
+prereq: ~
+priority: 2
+showstopper: ~
+skip: 0
+summary: This is my sanity test
+tags:
+  - sanity
+tests:
+  - 1
+  - 2
+todo: 0

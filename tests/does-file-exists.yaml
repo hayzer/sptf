@@ -1,0 +1,25 @@
+---
+author: Thomas
+continuity: 0
+date: Sat Oct 18 23:22:56 IST 2008
+description: |
+  Check if given file exists
+  
+  - parameters: 
+     File name 
+  - returns: 1 or undef
+executor:
+  class: My::Test
+  method: does_file_exists
+id: 2
+parameters:
+  - ./sptf
+postreq: ~
+prereq: ~
+priority: 1
+skip: 0
+summary: Check if ./sptf exists
+tags:
+  - file_exists
+  - sanity
+todo: 0

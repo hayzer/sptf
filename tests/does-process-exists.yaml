@@ -1,0 +1,25 @@
+---
+author: Thomas
+continuity: 0
+date: Fri Oct 17 16:03:23 IST 2008
+description: |
+  This test check if given process ID is an existing 
+  process in the system.
+  
+  - parameters:
+                1) Process ID
+  - returns   : 0 on success or 1 on failure
+executor:
+  binary: does-process-exists.sh
+id: 1
+parameters:
+  - 1
+postreq: ~
+prereq:
+priority: 1
+skip: 0
+summary: Check if process no 1 exists.
+tags:
+  - process
+  - sanity
+todo: 0
