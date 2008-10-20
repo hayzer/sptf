@@ -1,0 +1,132 @@
+# Completion file for the sptf driver
+
+function _first_flags() 
+{
+	declare flags="--show-all-ids --show-all-tags  --show-tc-summary --show-continuity --show-executor --show-tags --show-test-cases --show-date --show-params --show-postreq --show-prereq --show-summary --show-description --show-author --show-file --show-id --show-todo --show-skip --show-id-of-tag --run"
+	echo "${flags}"
+}
+
+function _show_flags()
+{
+	declare flags="--test-id --scenario-id --suite-id --name --name-regex --notable --all-tests --all-scenarios"
+	echo "${flags}"
+}
+
+function _secondary_flags() 
+{
+	declare flags="--test-id --scenario-id --suite-id --name --name-regex --test-tag --scenario-tag --suite-tag --notable --libpath --testspath --all-tests --all-scenarios"
+	echo "${flags}"
+}
+
+function _run_flags()
+{
+	declare flags="--test-id --scenario-id --suite-id"
+	echo "${flags}"
+}
+
+function _all_flags()
+{
+	declare flags="--all-tests --all-scenarios --all-suites"
+	echo "${flags}"
+}
+
+function _id_flags()
+{
+	declare flags="--libpath --testspath"
+	echo "${flags}"
+}
+
+function _show_of_flags()
+{
+	declare flags="--test-tag --scenario-tag --suite-tag"
+	echo "${flags}"
+}
+
+function _show_test_cases()
+{
+	declare flags="--scenario-id"
+	echo "${flags}"
+}
+
+function _show_third_command()
+{
+	declare flags="--notable"
+	echo "${flags}"
+}
+
+#######################################
+function _sptf_commands() 
+{
+	 # This function should return COMPREPLAY array with all
+	 # the subcommands
+
+	COMPREPLY=()
+	declare command
+	declare     first_flags="$( _first_flags )"
+	declare secondary_flags="$( _secondary_flags )"
+
+	declare cur=${COMP_WORDS[COMP_CWORD]}
+	declare prev=${COMP_WORDS[COMP_CWORD-1]}
+
+#	if [ $COMP_CWORD -gt 1 ]; then
+#		if [[ ${cur} != -* ]]; then
+#			_filedir
+#		fi
+#	fi
+
+	# Those are special cases for subcommands completion.
+	# I guess there are many more. For example: merge.
+	case "${prev}" in
+	--show-id-of*)
+		declare show_of_flags="$( _show_of_flags )"
+		COMPREPLY=( $(compgen -W "$( echo ${show_of_flags} )" -- ${cur}) )
+		return 0
+		;;
+	--show-test-cases)
+		declare show_test_cases="$( _show_test_cases )"
+		COMPREPLY=( $(compgen -W "$( echo ${show_test_cases} )" -- ${cur}) )
+		return 0
+		;;
+	--show-tc-summary)
+		COMPREPLY=( $(compgen -W "--scenario-id" -- ${cur}) )
+		return 0
+		;;
+	--show-all-*)
+		declare show_all_flags="$( _all_flags )"
+		COMPREPLY=( $(compgen -W "$( echo ${show_all_flags} )" -- ${cur}) )
+		return 0
+		;;
+	--run*)
+		declare run_flags="$( _run_flags )"
+		COMPREPLY=( $(compgen -W "$( echo ${run_flags} )" -- ${cur}) )
+		return 0
+		;;
+	--show*)
+		declare show_flags="$( _show_flags )"
+		COMPREPLY=( $(compgen -W "$( echo ${show_flags} )" -- ${cur}) )
+		return 0
+		;;
+	--id*)
+		declare id_flags="$( _id_flags )"
+		COMPREPLY=( $(compgen -W "$( echo ${id_flags} )" -- ${cur}) )
+		return 0
+		;;
+	esac
+
+	if [ $COMP_CWORD -eq 1 ]; then
+		COMPREPLY=( $(compgen -W "$( echo ${first_flags} )" -- ${cur}) )
+	fi
+
+	if [ $COMP_CWORD -gt 2 ]; then
+		if [[ ${cur} == --* ]]; then
+			COMPREPLY=( $(compgen -W "$( _show_third_command )" -- ${cur}) )
+		fi
+	fi
+
+	#_filedir
+}
+
+complete -F _sptf_commands sptf
+
+
+# vim ts=4 sw=4 syn=sh :
