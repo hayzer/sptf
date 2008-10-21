@@ -25,10 +25,10 @@ Because I can.
  * My testing code is written in OO way.
  * I think that creating and maintaining additional information about each test case is an overkill task.
  * I already manage my tests information in Testopia/Testlink/etc`.
- * Because I can't stop thinking "What the hell he's talking about..."
+ * I don't know yet, but I'll find something.
 
 == Isn't SPTF just another test runner ? ==
-TBD
+It is. But not like the others, SPTF can manage its own tests. More about this in the [Introduction].
 
 == Isn't SPTF just another test manager ? ==
-TBD
+It is. But not in the manner of Testopia/Testlink or some commercial tool. Each test has its own metadata. I opposite to regular test managers, where either you'll have to manually sign the test result or you'll have to use some external API to do this, SPTF can execute the tests and report the results only according to its metadata. More about this in the [Introduction].
