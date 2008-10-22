@@ -43,14 +43,13 @@ BEGIN {
 
 $| = 1;
 
-my ($get_test_data,$get_scenario_data,$get_suite_data);
+my ($get_test_data,$get_scenario_data);
 my ($opts,$testflag,$motto);
 my $author = q{default};
 my @names;
 
 my $scenariopath = q{scenarios};
 my $testspath    = q{tests};
-my $suitepath    = q{suites};
 
 #---------------------------------------------------------------------------
 #  We're using Test::Builder here to save test output in
@@ -59,7 +58,6 @@ my $suitepath    = q{suites};
 my $Test = Test::Builder->new;
 
 my @tests     = yaml_files($testspath);
-my @suites    = yaml_files($suitepath);
 my @scenarios = yaml_files($scenariopath);
 
 GetOptions(
@@ -86,10 +84,6 @@ GetOptions(
 	"show-all-tags"         => sub { $opts->{showme}  = q{alltags}      },
 	"show-all-ids"          => sub { $opts->{showme}  = q{allids}       },
 	"show-tc-summary"       => sub { $opts->{showme}  = q{tcsummary}    },
-	"all-suites"            => sub {
-								$opts->{key} = q{allsuites};
-								$testflag    = q{suites};
-								},
 	"all-scenarios"         => sub { 
 								$opts->{key} = q{allscenarios};
 								$testflag    = q{scenarios};
@@ -106,10 +100,6 @@ GetOptions(
 								$opts->{key} = $_[1];
 								$testflag = q{scenarios};
 								},
-	"suite-id=s"            => sub {
-								$opts->{key} = $_[1];
-								$testflag = q{suites};
-								},
 	"test-name=s"           => sub {
 								$opts->{key} = "$testspath/$_[1]";
                                 $testflag = q{tests};
@@ -121,10 +111,6 @@ GetOptions(
 	"scenario-tag=s"        => sub {
 								$opts->{key} = $_[1];
 								$testflag    = q{scenarios};
-								},
-	"suites-tag=s"          => sub {
-								$opts->{key} = $_[1];
-								$testflag    = q{suites};
 								},
 	"test-author=s"         => sub {
 								$opts->{key} = qq{$_[1]};
@@ -213,9 +199,6 @@ if ($opts->{key} eq 'alltests') {
 }
 elsif ($opts->{key} eq 'allscenarios') {
 	$opts->{key} = join ',', @scenarios;
-}
-elsif ($opts->{key} eq 'allsuites') {
-	$opts->{key} = join ',', @suites;
 }
 	
 #---------------------------------------------------------------------------
@@ -335,7 +318,6 @@ my $all_test = sub {
 #---------------------------------------------------------------------------
 $get_test_data     = $all_test->(@tests);
 $get_scenario_data = $all_test->(@scenarios);
-$get_suite_data    = $all_test->(@suites);
 
 #---------------------------------------------------------------------------
 #  UI pointer.
@@ -382,10 +364,6 @@ diag(q{Start time: } . scalar localtime) if $ENV{MATS_VERBOSE};
 if ($opts->{'run'}) {
 	my ($tests,@test_ids);
 	
-	if ($testflag eq q{suites}) {
-		$opts->{key} = get_tests_from_suite( $opts->{key} );
-	}
-
 	if ($testflag eq q{scenarios}) {
 		$opts->{key} = get_tests_from_scenario( $opts->{key} );
 	}
@@ -422,35 +400,6 @@ if ($opts->{'run'}) {
 
 diag(q{End time: }. scalar localtime) if $ENV{MATS_VERBOSE};
 exit 0;
-
-#---------------------------------------------------------------------------
-#  Rip test case ids from given suite
-#---------------------------------------------------------------------------
-sub get_tests_from_suite {
-	my ($suites,$tests) = @_;
-
-	return $tests if ! $suites;
-	my @suites = split /,/, $suites;
-
-	my $suite        = shift @suites;
-	my $scenario_ids = get_single_element(
-		$suite,
-		q{scenarios},
-		$get_suite_data,
-	);
-
-	my @suite_tests;
-
-	my $suite_test_cases  = get_tests_from_scenario($scenario_ids);
-	(defined $tests)
-		? push @suite_tests, $tests, $suite_test_cases
-		: push @suite_tests, $suite_test_cases;
-
-	$tests  = join ',', @suite_tests;
-	$suites = join ',', @suites;
-
-	get_tests_from_suite($suites,$tests);
-}
 
 #---------------------------------------------------------------------------
 #  Rip test case ids from given scenarios
@@ -516,7 +465,6 @@ sub show_test_element {
 	#---------------------------------------------------------------------------
 	$data = $get_test_data     if ($testflag eq q{tests});
 	$data = $get_scenario_data if ($testflag eq q{scenarios});
-	$data = $get_suite_data    if ($testflag eq q{suites});
 
 	#---------------------------------------------------------------------------
 	#  Special cases. I hate this.
@@ -899,9 +847,6 @@ sub short_usage {
 	Execute test scenario with id 7
     # sptf --run --scenario-id 7
 
-	Execute test suite with id 1
-	# sptf --run --suite-id 1
-	
 	Show who's executing test case with id 10:
 	# sptf --show-executor --test-id=10
 	
