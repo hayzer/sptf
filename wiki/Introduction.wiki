@@ -22,4 +22,4 @@
 
 == The other mode SPTF can work in ==
 
-== Create Test Case in Perl in TestBuilder mode ==
+== Create Test Case in Perl in Test Builder mode ==
