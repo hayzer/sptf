@@ -1,7 +1,7 @@
 #summary Why or why not SPTF.
 
 == Why another framework I ? ==
-There are a lot of CLI based testing frameworks and environments. Some are good, some are much better. But none of them, that I'm aware about, has all of the features I wanted. So I washed my eyes with all those cool ideas, stole them and put them into one basket.
+There are a lot of CLI based testing frameworks and environments. Some are good, some are much better. But none of them, that I'm aware about, has all of the features I wanted. So I washed my eyes with other people cool ideas, stole them and put them into one basket.
 
 == Why another framework II ? ==
 Because I can.
