@@ -18,6 +18,8 @@
 
 == Start to use it ==
 
+== Why TAP ? ==
+
 == The other mode SPTF can work in ==
 
 == Create Test Case in Perl in TestBuilder mode ==
