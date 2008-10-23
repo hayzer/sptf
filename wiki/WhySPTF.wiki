@@ -18,7 +18,7 @@ Because I can.
  * Each test has its owner so there always someone to be blame.
  * No need to code to get all those features.
  * I can easily convert the test metadata to any format I/my boss like - PDF, RTF, HTML, etc`.
- * With all this, if one day I'll decide that SPTF is not good enough, I can migrate to other testing framework without changing my code.
+ * With all this, if one day I'll decide that SPTF is not good enough, I can migrate to other testing framework without changing my code. Of course it depends on the 'other testing framework' ..
 
 == Why SPTF is NOT good for me ? ==
  * I already have 10000 test cases.
