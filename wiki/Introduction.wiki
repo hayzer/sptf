@@ -1,0 +1,23 @@
+#summary Short introduction to SPTF
+
+== Background ==
+
+== Install SPTF ==
+
+== SPTF environment and dependencies ==
+
+== Create Test Case in Perl ==
+
+== Create Test Case in other language ==
+
+== Create Test Case metadata ==
+
+== What is Test Scenario ? ==
+
+== Create Test Scenario metadata ==
+
+== Start to use it ==
+
+== The other mode SPTF can work in ==
+
+== Create Test Case in Perl in TestBuilder mode ==
