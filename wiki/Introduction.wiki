@@ -6,6 +6,10 @@
 
 == SPTF environment and dependencies ==
 
+== SPTF Flow ==
+
+[http://www.fileden.com/files/2008/8/31/2074614/sptf-flow.jpg]
+
 == Create Test Case in Perl ==
 
 == Create Test Case in other language ==
