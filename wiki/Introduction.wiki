@@ -57,6 +57,8 @@ This is why SPTF offer a different mode of work, Test Builder mode. In our code 
 
 IMHO, Test Builder mode is preferable over the simple mode. 
 
+*NOTE: You can create and maintain test cases in both modes, but single test scanario may includes only test cases of one kind. It has to be either simple mode or Test Builder mode!*
+
 == Create Test Case in Perl in Test Builder mode ==
 
 *NOTE: In Test Builder mode, SPTF will pass to your function a string as a very first parameter! This string is a combination of test case ID and its summary. It will let you to use it later in your methods code as test case description or as any kind of diagnostic information. Keep it in mind because ingoring this ugly hack may breake your test!*
