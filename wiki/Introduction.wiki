@@ -6,6 +6,10 @@
 
 == SPTF environment and dependencies ==
 
+Clearly the test code and the test configuration should be separated.
+SPTF let you do that by passing parameters to your testing method
+from within its metadata.
+
 == SPTF Flow ==
 
 [http://www.fileden.com/files/2008/8/31/2074614/sptf-flow.jpg]
@@ -47,4 +51,16 @@ Because it's a ...
 
 == The other mode SPTF can work in ==
 
+As we already know, testing facilities in SPTF are very basic. SPTF will execute the test method and simple check (using [http://cpan.uwinnipeg.ca/htdocs/Test-Simple/Test/More.html Test::More] *ok* function) its result, if it was true or false. In some cases, it may not be sufficient. Perl has very rich testing framework, why not to use it in our tests ? 
+
+This is why SPTF offer a different mode of work, Test Builder mode. In our code we can use [http://cpan.uwinnipeg.ca/htdocs/Test-Simple/Test/Builder.html Test::Builder] class to create TAP complient testing methods. Now through the configuration file option _testbuilder_ or using _--test-builder_ flag in CLI, we can ask SPTF simple to run this method without using SPTF internal testing mechanizm (verifying the result with the *ok* function). In Test Builder mode our tests will be much more flexible, exact and verbose if we need it. 
+
+IMHO, Test Builder mode is preferable over the simple mode. 
+
 == Create Test Case in Perl in Test Builder mode ==
+
+*NOTE: In Test Builder mode, SPTF will pass to your function a string as a very first parameter! This string is a combination of test case ID and its summary. It will let you to use it later in your methods code as test case description or as any kind of diagnostic information. Keep it in mind because ingoring this ugly hack may breake your test!*
+
+{{{
+# ./sptf --run --scenario-id 1 --test-builder 
+}}}
