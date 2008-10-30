@@ -22,7 +22,28 @@
 
 == Start to use it ==
 
+Now we can watch the summary of each test case within the newly created
+scenario, you may say to verify it:
+
+{{{
+# ./sptf --show-tc-summary --scenario-id 1
+}}}
+
+If you already forgot what this scenario is about:
+
+{{{
+# ./sptf --show-description --scenario-id 1
+}}} 
+
+To execute the test scenario we've just create:
+
+{{{
+# ./sptf --run --scenario-id 1
+}}}
+
 == Why TAP ? ==
+
+Because it's a ...
 
 == The other mode SPTF can work in ==
 
