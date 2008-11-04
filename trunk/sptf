@@ -472,12 +472,12 @@ sub show_test_element {
 	if ($token =~ m{\A ^(?:idoftag)$ \z}xms) {
 		$ids       = join ',', $data->($id,$token);
 	}
-	elsif ($token =~ m{\A ^(?:alltags)$ \z}xms) {
+	elsif ($token =~ m{\A ^(?:alltags|allids)$ \z}xms) {
 		$ids       = join "\n", numsort(@{ $data->($token) });
 	}
-	elsif ($token =~ m{\A ^(?:allids)$ \z}xms) {
-		$ids       = join "\n", numsort(@{ $data->($token) });
-	}
+#	elsif ($token =~ m{\A ^(?:allids)$ \z}xms) {
+#		$ids       = join "\n", numsort(@{ $data->($token) });
+#	}
 	elsif ($id =~ m{\A ^(?:$author)$ \z}xms) {
 		$ids       = join ',', @{ $data->($id) };
 #		$first_col = uc substr($token,4);
