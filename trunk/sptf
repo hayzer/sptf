@@ -139,8 +139,8 @@ GetOptions(
 	"priority=s"            => \$opts->{priority},
 	"config-file=s"         => \$opts->{configfile},
 	"test-builder"          => \$opts->{testbuilder},
-	"verbose"               => sub { $ENV{MATS_VERBOSE}     = 1     },
-	"output-file=s"         => sub { $ENV{MATS_TEST_OUTPUT} = $_[1] },
+	"verbose"               => sub { $ENV{SPTF_VERBOSE}     = 1     },
+	"output-file=s"         => sub { $ENV{SPTF_TEST_OUTPUT} = $_[1] },
 	"add-default-name"      => \$opts->{adddefaultname},
 	"motto"                 => \$motto,
 	"help"                  => \&short_usage,
@@ -160,10 +160,10 @@ if ($motto) {
 $opts->{configfile} ||= q{.sptfrc};
 my $config            = config_file($opts->{configfile});
 
-$ENV{MATS_TEST_OUTPUT} ||= $config->{testoutput};
+$ENV{SPTF_TEST_OUTPUT} ||= $config->{testoutput};
 
-if ($ENV{MATS_TEST_OUTPUT}) {
-	open my $fh, '>', $ENV{MATS_TEST_OUTPUT};
+if ($ENV{SPTF_TEST_OUTPUT}) {
+	open my $fh, '>', $ENV{SPTF_TEST_OUTPUT};
 
 	$Test->todo_output($fh);
 	$Test->failure_output($fh);
@@ -177,7 +177,7 @@ $opts->{nodependencycheck} ||= $config->{nodependencycheck};
 $opts->{noprioritycheck}   ||= $config->{noprioritycheck};
 $opts->{totaltime}         ||= $config->{showtotaltime};
 $opts->{notable}           ||= $config->{notable};
-$ENV{MATS_VERBOSE}         ||= $config->{verbose};
+$ENV{SPTF_VERBOSE}         ||= $config->{verbose};
 
 if ($opts->{totaltime} and $no_total_time) {
 	print "To use --total-time option, first install Time::Elapse perl module.\n";
@@ -360,7 +360,7 @@ show_test_element($opts->{showme},$opts->{key}) if ($opts->{showme});
 #---------------------------------------------------------------------------
 #  Run test, run.
 #---------------------------------------------------------------------------
-diag(q{Start time: } . scalar localtime) if $ENV{MATS_VERBOSE};
+diag(q{Start time: } . scalar localtime) if $ENV{SPTF_VERBOSE};
 if ($opts->{'run'}) {
 	my ($tests,@test_ids);
 	
@@ -398,7 +398,7 @@ if ($opts->{'run'}) {
 	}
 }
 
-diag(q{End time: }. scalar localtime) if $ENV{MATS_VERBOSE};
+diag(q{End time: }. scalar localtime) if $ENV{SPTF_VERBOSE};
 exit 0;
 
 #---------------------------------------------------------------------------
@@ -754,7 +754,7 @@ sub short_usage {
 	(my $usage_msg = <<END_OF_USAGE) =~ s/^\t//gm;
 	Usage:  sptf [OPTIONS]
 
-	Present or execute MATS tests. 
+	Present or execute SPTF tests. 
 
 	Show test case attributes:
 	(If used without additional parameters, show attributes for all
@@ -821,7 +821,7 @@ sub short_usage {
 	                        or an test scenario given by --scenario-id
 	  --config-file         Matsrunner configuration file (default: .sptf)
 	  --test-builder       	Support for code with Test::Builder
-	  --verbose             Define environment variable MATS_VERBOSE 
+	  --verbose             Define environment variable SPTF_VERBOSE 
 	  --no-priority-check   No priority check before the session (overwrite
 							configuration file)
 	  --no-dependency-check No dependency check before the session (overwrite
