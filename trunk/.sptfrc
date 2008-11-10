@@ -1,6 +1,6 @@
 # SPTF configuration file
 {
-notable           => 1, # In show commands, print the results in ASCII formatted table
+notable           => 0, # In show commands, print the results in ASCII formatted table
 testbuilder       => 0, # Execute mastrunner in the Test::Builder manner
 priority          => 2, # Not implemented yet
 verbose           => 0, # Create environment variable SPTF_VERBOSE (useful to start 
