@@ -1,0 +1,24 @@
+---
+author: Thomas
+continuity: 0
+date: Mon Nov 10 23:39:04 IST 2008
+description: |
+  Verify the TAP output for double test cases with
+  Test Builder option enable.
+  
+executor:
+  class: Test::SPTF::TAP
+  method: double_test_with_tb
+id: 5
+parameters:
+dependency:
+bug:
+postreq: ~
+prereq: ~
+priority: 1
+skip: 0
+summary: Test SPTF TAP output of double test case
+tags:
+  - tap
+  - sanity
+todo: 0

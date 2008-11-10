@@ -1,0 +1,24 @@
+---
+author: Thomas
+continuity: 0
+date: Fri Nov  7 21:33:59 IST 2008
+description: |
+  Verify the TAP output of single test case while
+  Test Builder option is not used.
+  
+executor:
+  class: Test::SPTF::TAP
+  method: single_test
+id: 1
+parameters:
+dependency:
+bug:
+postreq: ~
+prereq: ~
+priority: 1
+skip: 0
+summary: Test SPTF TAP output of single test case
+tags:
+  - tap
+  - sanity
+todo: 0
