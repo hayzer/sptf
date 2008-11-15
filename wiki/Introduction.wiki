@@ -54,8 +54,7 @@ _OS_
   * Gentoo 
   * RHE 4
   * Centos 4.4
-  * WinXP (although with some error - look at Issues)
-
+  * WinXP (currently there is an [http://code.google.com/p/sptf/issues/detail?id=5 issue])
 
 _Perl versions_
 
