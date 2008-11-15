@@ -2,14 +2,71 @@
 
 == Background ==
 
-== Install SPTF ==
+== Install *SPTF* ==
 
-== SPTF environment and dependencies ==
+== *SPTF* environment and dependencies ==
+
+=== Environment ===
+*SPTF* should supply certain directory structure.
+
+{{{
+# tree -d -L 1 sptf/
+sptf/
+|--bin
+|--config
+|--lib
+|--scenarios
+`--tests
+
+}}}
+
+... where:
+
+`bin/`       - the "binary" test cases.  
+
+`config/`    - directory for all configuration files used by the tests.
+
+`lib/`       - the testing code (currently only Perl supported).
+
+`scenarios/` - scenarios metadata.
+
+`tests/`     - test cases metdata.
+
+*SPTF* package includes some test cases and scenarios code and metadata. These are the *SPTF* unit tests. 
+----
+
+NOTE: *SPTF* unit tests are written in *SPTF*. They may be used as an example. 
+
+----
 
 Clearly the test code and the test configuration should be separated.
-SPTF let you do that by passing parameters to your testing method
-from within its metadata.
+*SPTF* let you do that by passing parameters to your testing method
+from within the metadata.
 
+=== Dependencies ===
+
+*SPTF* was proved to work correctly under:
+
+  # OS
+
+  * Gentoo 
+  * RHE 4
+  * Centos 4.4
+
+  # Perl versions
+
+  * 5.8.5
+  * 5.8.7
+  * 5.8.8
+
+  # Perl modules
+
+  * Test::Builder
+  * Text::ASCIITable
+  * Time::Elapse
+
+(Other modules used by *SPTF* should be the core modules)
+  
 == SPTF Flow ==
 
 [http://www.fileden.com/files/2008/8/31/2074614/sptf-flow.jpg]
