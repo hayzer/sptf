@@ -4,6 +4,12 @@
 
 == Install *SPTF* ==
 
+Simple open the compressed archive:
+
+{{{
+# tar -jxvf stpf-<version>.tag.bz2
+}}}
+
 == *SPTF* environment and dependencies ==
 
 === Environment ===
@@ -22,15 +28,11 @@ sptf/
 
 ... where:
 
-`bin/`       - the "binary" test cases.  
-
-`config/`    - directory for all configuration files used by the tests.
-
-`lib/`       - the testing code (currently only Perl supported).
-
-`scenarios/` - scenarios metadata.
-
-`tests/`     - test cases metdata.
+||`bin/`||-|| the "binary" test cases.||  
+||`config/`||-||directory for all configuration files used by the tests.||
+||`lib/`||-||the testing code (currently only Perl supported).||
+||`scenarios/`||-||scenarios metadata.||
+||`tests/`||-||test cases metdata.||
 
 *SPTF* package includes some test cases and scenarios code and metadata. These are the *SPTF* unit tests. 
 ----
@@ -47,25 +49,27 @@ from within the metadata.
 
 *SPTF* was proved to work correctly under:
 
-  # OS
+_OS_
 
   * Gentoo 
   * RHE 4
   * Centos 4.4
+  * WinXP (although with some error - look at Issues)
 
-  # Perl versions
+
+_Perl versions_
 
   * 5.8.5
   * 5.8.7
   * 5.8.8
 
-  # Perl modules
+_Perl modules required_
 
   * Test::Builder
   * Text::ASCIITable
   * Time::Elapse
 
-(Other modules used by *SPTF* should be the core modules)
+(Other modules used by *SPTF* suppose to be the core modules)
   
 == SPTF Flow ==
 
