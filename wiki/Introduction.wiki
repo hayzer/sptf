@@ -1,4 +1,4 @@
-#summary Short introduction to SPTF
+﻿#summary Short introduction to SPTF
 
 == Background ==
 
@@ -74,6 +74,60 @@ _Perl modules required_
 
 [http://www.fileden.com/files/2008/8/31/2074614/sptf-flow.jpg]
 
+== Test Case Definition ==
+
+For SPTF user, test case is represented by single file. It's in YAML format and contains
+information that is used by SPTF in the execution as well as in management manner. 
+Some of this information is necessary to execute the test case,
+some is helpful in the interaction between test cases and some may be used to management
+the test case.
+Let's take a look on the format of such a file and define each metadata it may care with.
+
+{{{
+
+---
+author:       # Who create this test case
+date:         # When it happen 
+continuity:   # In case of failure, do we want to continue ? 0 for yes, 1 for no.
+description: |
+			 # here comes a detailed definition of what we're doing in this
+			 # specific test case, i.e. what this test case is about, what are its
+			 # parameters, what is the expected result, etc`.
+			 # You maybe verbose here as much as you desire. And you should ...
+executor:    # What code is actually executing this test case. Here there are
+             # 2 options:
+			 # - the Perl way
+			 
+class:       # name of the Perl module to be loaded
+             # should be placed in lib/
+method:      # name of the test method
+  
+  			 # or ..
+
+binary:      # name of the binary file with the test
+             # should be placed in bin/
+id:          # test case ID
+parameters:  # method agruments
+ - arg1
+ - arg2
+dependency:  # ID of some other test case on which this one
+             # is depend on
+bug:         # ID (or string) of the bug this test case is
+             # reproducing
+prereq:      # name of the binary file to execute before
+             # this test case, should be placed in prereq/
+postreq:     # same as above, running after this test case
+priority:    # test case priority
+skip:        # skip execution of this test (1 to skip)
+summary:     # short description of this test case
+tags:        # keyword description of this test case
+  - tag1
+  - tag2
+todo:        # using this if code for this test case
+             # does not exists yet
+
+}}}
+
 == Create Test Case in Perl ==
 
 == Create Test Case in other language ==
@@ -113,15 +167,15 @@ Because it's a ...
 
 As we already know, testing facilities in SPTF are very basic. SPTF will execute the test method and simple check (using [http://cpan.uwinnipeg.ca/htdocs/Test-Simple/Test/More.html Test::More] *ok* function) its result, if it was true or false. In some cases, it may not be sufficient. Perl has very rich testing framework, why not to use it in our tests ? 
 
-This is why SPTF offer a different mode of work, Test Builder mode. In our code we can use [http://cpan.uwinnipeg.ca/htdocs/Test-Simple/Test/Builder.html Test::Builder] class to create TAP complient testing methods. Now through the configuration file option _testbuilder_ or using _--test-builder_ flag in CLI, we can ask SPTF simple to run this method without using SPTF internal testing mechanizm (verifying the result with the *ok* function). In Test Builder mode our tests will be much more flexible, exact and verbose if we need it. 
+This is why SPTF offer a different mode of work, Test Builder mode. In our code we can use [http://cpan.uwinnipeg.ca/htdocs/Test-Simple/Test/Builder.html Test::Builder] class to create TAP complaint testing methods. Now through the configuration file option _testbuilder_ or using _--test-builder_ flag in CLI, we can ask SPTF simple to run this method without using SPTF internal testing mechanism (verifying the result with the *ok* function). In Test Builder mode our tests will be much more flexible, exact and verbose if we need it. 
 
 IMHO, Test Builder mode is preferable over the simple mode. 
 
-*NOTE: You can create and maintain test cases in both modes, but single test scanario may includes only test cases of one kind. It has to be either simple mode or Test Builder mode!*
+*NOTE: You can create and maintain test cases in both modes, but single test scenario may includes only test cases of one kind. It has to be either simple mode or Test Builder mode!*
 
 == Create Test Case in Perl in Test Builder mode ==
 
-*NOTE: In Test Builder mode, SPTF will pass to your function a string as a very first parameter! This string is a combination of test case ID and its summary. It will let you to use it later in your methods code as test case description or as any kind of diagnostic information. Keep it in mind because ingoring this ugly hack may breake your test!*
+*NOTE: In Test Builder mode, SPTF will pass to your function a string as a very first parameter! This string is a combination of test case ID and its summary. It will let you to use it later in your methods code as test case description or as any kind of diagnostic information. Keep it in mind because ignoring this ugly hack may break your test!*
 
 {{{
 # ./sptf --run --scenario-id 1 --test-builder 
