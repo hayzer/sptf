@@ -179,7 +179,7 @@ So SPTF tests produce TAP output. It depends on you what to do with it.
 
 As we already know, testing facilities in SPTF are very basic. SPTF will execute the test method and simple check (using [http://cpan.uwinnipeg.ca/htdocs/Test-Simple/Test/More.html Test::More] *ok* function) its result, if it was true or false. In some cases, it may not be sufficient. Perl has very rich testing framework, why not to use it in our tests ? 
 
-This is why SPTF offer a different mode of work, Test Builder mode. In our code we can use [http://cpan.uwinnipeg.ca/htdocs/Test-Simple/Test/Builder.html Test::Builder] class to create our own TAP output. Now through the configuration file option _testbuilder_ or using _--test-builder_ flag in CLI, we can ask SPTF simple to run this method without using SPTF internal testing mechanism (*STPF* will not verify the result with the *ok* function). In Test Builder mode our tests will be much more flexible, exact and verbose if we need it. 
+This is why SPTF offer a different mode of work, Test Builder mode. In our code we can use [http://cpan.uwinnipeg.ca/htdocs/Test-Simple/Test/Builder.html Test::Builder] class to create our own TAP output. Now through the configuration file (_.sptfrc_) option _testbuilder_ or using _--test-builder_ flag in CLI, we can ask SPTF simple to run this method without using SPTF internal testing mechanism (*STPF* will not verify the result with the *ok* function). In Test Builder mode our tests will be much more flexible, exact and verbose if we need it. 
 
 IMHO, Test Builder mode is preferable over the simple mode. 
 
