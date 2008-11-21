@@ -1,5 +1,7 @@
 ﻿#summary Short introduction to SPTF
 
+<wiki:toc max_depth="1" />
+
 == Background ==
 
 == Install *SPTF* ==
