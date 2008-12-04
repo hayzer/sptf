@@ -41,7 +41,6 @@ DEPENDENCIES
 
 I do my best to have as few as possible. Thus I do have some.
 
-* Linux, although I hope to see SPTF running on Win32 one day
 * Perl interpreter (I guess, versions 5.8.5 and higher are good enough)
 
 The follow Perl modules:
@@ -64,7 +63,7 @@ COPYRIGHT AND LICENSE
 
 Thomas Maier, hayzer@gmail.com 
 
-Copyright (c) 2008-2008 by Thomas Maier. All Rights Reserved.  This module
+Copyright (c) 2008-2008 by Thomas Maier. All Rights Reserved.  This program
 is free software; you can redistribute it and/or modify it under the
 same terms as Perl itself.
 

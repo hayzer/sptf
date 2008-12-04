@@ -2,6 +2,8 @@
 author: Thomas
 continuity: 0
 date: Fri Nov  7 21:33:59 IST 2008
+bug:
+duration: 1.33
 description: |
   Verify the TAP output of single test case while
   Test Builder option is not used.

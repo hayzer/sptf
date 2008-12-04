@@ -2,6 +2,8 @@
 author: Thomas
 continuity: 0
 date: Mon Nov 10 23:15:27 IST 2008
+bug:
+duration:
 description: |
   Verify the TAP output of two test cases without
   Test Builder option.

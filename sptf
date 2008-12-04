@@ -72,6 +72,8 @@ GetOptions(
 	"show-summary"          => sub { $opts->{showme}  = q{summary}      },
 	"show-description"      => sub { $opts->{showme}  = q{description}  },
 	"show-author"           => sub { $opts->{showme}  = q{author}       },
+	"show-bug"              => sub { $opts->{showme}  = q{bug}          },
+	"show-duration"         => sub { $opts->{showme}  = q{duration}     },
 	"show-testid"           => sub { $opts->{showme}  = q{testid}       },
 	"show-id-of-tag"        => sub { $opts->{showme}  = q{idoftag}      },
 	"show-id"               => sub { $opts->{showme}  = q{id}           },
@@ -212,6 +214,8 @@ my $test_info = {
 	'summary'       => sub { shift->{summary}                      },
 	'author'        => sub { shift->{author}                       },
 	'description'   => sub { shift->{description}                  },
+	'bug'           => sub { shift->{bug}                          },
+	'duration'      => sub { shift->{duration}                     },
 	'continuity'    => sub { shift->{continuity}                   },
 	'skip'          => sub { shift->{skip}                         },
 	'todo'          => sub { shift->{todo}                         },
@@ -770,6 +774,8 @@ sub short_usage {
 	  --show-priority       Show priority of the test case/scenario
 	  --show-dependency     Show dependency of the test case
 	  --show-description    Show description of the test case/scenario
+	  --show-bug            Show bug ID, if exists
+	  --show-duration       Show duration time of the test case
 	  --show-author         Show author of the test case/scenario
 	  --show-file           Show the test case YAML file name
 	  --show-testid         Show ID of the test case

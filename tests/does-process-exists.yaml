@@ -2,6 +2,8 @@
 author: Thomas
 continuity: 0
 date: Fri Oct 17 16:03:23 IST 2008
+bug: 1000
+duration: 0.003
 description: |
   This test check if given process ID is an existing 
   process in the system.
