@@ -1,0 +1,12 @@
+﻿#summary Short introduction to SPTF
+
+<wiki:toc max_depth="1" />
+
+== Install *SPTF* ==
+
+Simple open the compressed archive:
+
+{{{
+# tar -jxvf stpf-<version>.tag.bz2
+}}}
+
