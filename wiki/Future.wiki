@@ -1,0 +1,11 @@
+﻿Short list of features I plan to add to SPTF
+
+ * Support for Win32
+ * Support for class + method execution style in other languages (Ruby, Python, etc).
+ * Replace Metadata format (YAML) with other format. Probably using Config:Std.
+ * Database to archive test results.
+ * 'quiet' option for the test session. No test results goes to the output. Only return code.
+ * Configurable timeout for each test case.
+ * Configurable option to execute additional operation when test failed. (on_failure tag)
+ * Coverage. New tag in metadata - feature. I assume, running all tests with given feature will give 100% coverage for this feature.
+ * 

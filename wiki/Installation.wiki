@@ -7,6 +7,6 @@
 Simple open the compressed archive:
 
 {{{
-# tar -jxvf stpf-<version>.tag.bz2
+# tar -jxvf sptf-<version>.tag.bz2
 }}}
 
