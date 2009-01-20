@@ -2,10 +2,29 @@
 
  * Support for Win32
  * Support for class + method execution style in other languages (Ruby, Python, etc).
- * Replace Metadata format (YAML) with other format. Probably using Config:Std.
+ * Replace metadata format (YAML) with other format. Probably using Config:Std.
  * Database to archive test results.
  * 'quiet' option for the test session. No test results goes to the output. Only return code.
  * Configurable timeout for each test case.
  * Configurable option to execute additional operation when test failed. (on_failure tag)
- * Coverage. New tag in metadata - feature. I assume, running all tests with given feature will give 100% coverage for this feature.
- * 
+ * Coverage. New tag in metadata - feature. I will assume, running all tests with given feature will give 100% coverage for this feature.
+ * Showstopper in test scenario. Showstopper is test case ID where upon its failure, the whole test scenario will fail.
+ * Dependency on failure. Lets say, test case 2 is depend on failure to test case 1. If test case 1 fail, test case 2 won't be executed and will report failure as well.
+ * Logical operations on tags. 
+ {{{
+ # ./sptf --run --test-tag (sanity and not regression) and (server or client)
+ }}}
+ * Executing test cases by given author.
+ * Executing test cases by given tag(s).  
+ * Allow certain number of failures in test scenario. Will overwrite the continuity option in test case.
+ * Multiple ID test case dependency.
+ * Show in which scenarios appears given test case.
+ * Execute random test cases. (Shuffle)
+ * Execute random test cases based on shuffle family. For example
+ {{{
+ # ./sptf --run --shuffle-family 1,4,3
+ }}}
+ will pick random test case from shuffle family 1 and execute, then random test case from shuffle family 2 and execute and so on. It's good when test cases in only certain groups of tests may be execute independently one from another. 
+  * Any environmental variable maybe import into the test environment. Helpful with complex diagnostics.
+  * Test scenario will support continuity option.
+  * Show all test cases/scenarios belongs to given author.
