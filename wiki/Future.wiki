@@ -2,13 +2,17 @@
 
  * Support for Win32
  * Support for class + method execution style in other languages (Ruby, Python, etc).
- * Replace metadata format (YAML) with other format. Probably using Config:Std (because of the comments persistency)
- * Split more code into the subroutines.
+ * Replace metadata format (YAML) with other format. Probably using Config:Std (?).
+ * Split more code into subroutines. One day SPTF will became a class maybe.
+ * Method parameters within metadata should be any data structure and not only array.
  * Database to archive test results. (I'm not sure about this now).
  * 'quiet' option for the test session. No test results goes to the output. Only return code.
  * Configurable timeout for each test case.
  * Configurable option to execute additional operation when test failed. (on_failure tag)
  * Coverage. New tag in metadata - feature. I will assume, running all tests with given feature will give 100% coverage for this feature. Disputable, but I like the idea.
+{{{
+ # ./sptf --run --scenario-id 10 --coverage
+}}}
  * Showstopper in test scenario. Showstopper is test case ID where upon its failure, the whole test scenario will fail.
  * Dependency on failure. Lets say, test case 2 is depend on failure to test case 1. If test case 1 fail, test case 2 won't be executed and will report failure as well.
  * Logical operations on tags (thanks, Blumzi). 
@@ -20,14 +24,42 @@
  * Allow certain number of failures in test scenario. Will overwrite the continuity option in test case.
  * Multiple ID test case dependency.
  * Show in which scenarios appears given test case.
- * Execute random test cases. (Shuffle)
- * Execute random test cases based on shuffle family. For example
+ * Execute given program before running the test, quit the test if pre program failed (sic?)
+{{{
+ # ./sptf --run --pre-test pre/create-env.pl --scenario-id 1
+}}}
+ * Execute given program after the test. (_--post-test_)
+ * Execute specific test cases in random mode. (shuffle)
+{{{
+ # ./sptf --run --shuffle --test-id 1,2,3,4
+}}}
+ * Execute random number (in the range) of test cases from the entire pull of test cases in random way
+{{{
+ # ./sptf --run --shuffle --min 10 --max 200
+}}}
+ * Execute exact number of test cases for the entire test cases pull in random way.
+{{{
+ # ./sptf --run --shuffle --min 256 --max 256
+}}}
+ * The same way for the entire scenarios pull as well
+{{{
+ # ./sptf --run --shuffle --min 5 --max 10 --scenarios
+}}}
+ * Execute random test cases based on shuffle family (tag in metadata). For example
  {{{
  # ./sptf --run --shuffle-family 1,4,3
  }}}
- will pick random test case from shuffle family 1 and execute, then random test case from shuffle family 2 and execute and so on. It's good when test cases in only certain groups of tests may be execute independently one from another. (I'm not sure about this now) 
- * Any environmental variable maybe import into the test environment. Helpful with complex diagnostics.
+ will pick random test case from shuffle family 1 and execute, then random test case from shuffle family 2 and execute and so on. It's good when test cases in only certain groups of tests may be execute independently one from another. (I'm not sure about this) 
+ * Maybe even to run several test cases from each shuffle family
+{{{
+ # ./sptf --run --shuffle-family 1:10,4:2,3:1024
+}}}
+ * Any environmental variable maybe import into the test environment. May be helpful for example with layered TAP diagnostics.
+{{{
+ # ./sptf --run --test-id 1,2,3,4 --env-var DO_TRACE --env-var DEBUG_LEVEL=4
+}}}
  * Test scenario will support continuity option.
  * Show all test cases/scenarios belongs to given author.
+ * Check if the method belongs to the class before it's execute.
  
-Some ideas here oppose one to another, I know. Each one will have its importancy level, to avoid conflicts.
+Some ideas here may oppose one to another. Maybe each one will have its importancy level, to avoid conflicts.
