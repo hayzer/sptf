@@ -1,4 +1,4 @@
-﻿Short list of features I plan to add to SPTF
+﻿ Short list of features I plan to add to SPTF
 
  * Support for Win32
  * Support for class + method execution style in other languages (Ruby, Python, etc).
@@ -67,7 +67,7 @@
 {{{
  # ./sptf --run --shuffle-family 1:10,4:2,3:1024
 }}}
- * Any environmental variable maybe import into the test environment. May be helpful for example with layered TAP diagnostics.
+ * Any environmental variable maybe import into the test environment. May be helpful for example with layered TAP diagnostics in Test Builder mode or for setting up logging layer.
 {{{
  # ./sptf --run --test-id 1,2,3,4 --env-var DO_TRACE --env-var DEBUG_LEVEL=4
 }}}
