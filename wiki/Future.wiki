@@ -4,6 +4,7 @@
  * Support for class + method execution style in other languages (Ruby, Python, etc).
  * Replace metadata format (YAML) with other format. Probably using Config:Std (?).
  * Split more code into subroutines. One day SPTF will became a class maybe.
+ * Split current help into short help and more verbose man.
  * Method parameters within metadata should be any data structure and not only array.
  * Database to archive test results. (I'm not sure about this now).
  * 'quiet' option for the test session. No test results goes to the output. Only return code.
@@ -29,6 +30,18 @@
  # ./sptf --run --pre-test pre/create-env.pl --scenario-id 1
 }}}
  * Execute given program after the test. (_--post-test_)
+ * Cancel pre/post requisite operations in test case. This way you may run the same test case once within scenario<br>where test cases depend each on another, but also in the random manner<br>where pre/post operation would build and destroy specific test case environment (fixture testing).
+{{{
+ # ./sptf --run --test-id 1,2,3,4 --no-prereq --no-postreq
+}}}
+ or
+{{{
+ # ./sptf --run --scenario-id 1 --no-prereq --no-postreq
+}}} 
+ * Cancel test cases dependency
+{{{
+ # ./sptf --run --scenario-id 1 --no-tc-dependency
+}}}
  * Execute specific test cases in random mode. (shuffle)
 {{{
  # ./sptf --run --shuffle --test-id 1,2,3,4
