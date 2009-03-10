@@ -13,6 +13,9 @@
  * Coverage. New tag in metadata - feature. I will assume, running all tests with given feature will give 100% coverage for this feature.<br>Disputable, but I like the idea.
 {{{
  # ./sptf --run --scenario-id 10 --coverage
+   ........
+   TAP test results
+   ........
  +---------+----------+-------------+--------------+
  | Feature | Total TC | Executed TC | Coverage (%) |
  +---------+----------+-------------+--------------+
@@ -21,6 +24,7 @@
  |  GUI    |   200    |    200      |     100      |
  +---------+----------+-------------+--------------+
 }}}
+ Maybe successful statistics should be part of the coverage. (?)
  * Showstopper in test scenario. Showstopper is test case ID where upon its failure, the whole test scenario will fail.
  * Dependency on failure. Lets say, test case 2 is depend on failure to test case 1. If test case 1 fail, test case 2 won't be executed and will report failure as well.
  * Logical operations on tags (thanks, Blumzi). 
