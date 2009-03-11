@@ -55,19 +55,19 @@
 }}}
  * Execute specific test cases in random mode. (shuffle)
 {{{
- # ./sptf --run --shuffle --test-id 1,2,3,4
+ # ./sptf --run --all-tests --shuffle --test-id 1,2,3,4
 }}}
  * Execute random number (in the range) of test cases from the entire pull of test cases in random way
 {{{
- # ./sptf --run --shuffle --min 10 --max 200
+ # ./sptf --run --all-tests --shuffle --min 10 --max 200
 }}}
  * Execute exact number of test cases for the entire test cases pull in random way.
 {{{
- # ./sptf --run --shuffle --min 256 --max 256
+ # ./sptf --run --all-tests --shuffle --min 256 --max 256
 }}}
  * The same way for the entire scenarios pull as well
 {{{
- # ./sptf --run --shuffle --min 5 --max 10 --scenarios
+ # ./sptf --run --shuffle --min 5 --max 10 --all-scenarios
 }}}
  * Execute random test cases based on shuffle family (tag in metadata). For example
  {{{
