@@ -5,12 +5,13 @@
  * Replace metadata format (YAML) with other format. Probably using Config:Std (?).
  * Split more code into subroutines. One day SPTF will became a class maybe.
  * Split current help into short help and more verbose man.
- * Method parameters within metadata should be any data structure and not only array.
+ * Method parameters within metadata should be any data structure and not only array (damn!).
+ * *Plugin capability*. Load dynamically module to do something with the executed test<br>entity (case,scenario) or maybe some other stuff as well. I don't know yet, but it sounds cool.
  * Database to archive test results. (I'm not sure about this now).
  * 'quiet' option for the test session. No test results goes to the output. Only return code.
  * Configurable timeout for each test case.
- * Configurable option to execute additional operation when test failed. (on_failure tag)
- * Coverage. New tag in metadata - feature. I will assume, running all tests with given feature will give 100% coverage for this feature.<br>Disputable, but I like the idea.
+ * *Failure reaction*. Configurable option to execute additional operation when test case failed. (_onfailure_ tag)
+ * *Coverage*. New tag in metadata - feature. I assume that running all tests with given feature will<br>give 100% coverage for this feature. Disputable, but currently I like the idea.
 {{{
  # ./sptf --run --scenario-id 10 --coverage
    ........
@@ -23,16 +24,33 @@
  +---------+----------+-------------+--------------+
  |  GUI    |   200    |    200      |     100      |
  +---------+----------+-------------+--------------+
+ |  CLI    |    50    |      1      |     0.2      |
+ +---------+----------+-------------+--------------+
 }}}
- Maybe successful statistics should be part of the coverage. (?)
- * Showstopper in test scenario. Showstopper is test case ID where upon its failure, the whole test scenario will fail.
- * Dependency on failure. Lets say, test case 2 is depend on failure to test case 1. If test case 1 fail, test case 2 won't be executed and will report failure as well.
+ Maybe successful statistics should be part of the coverage.<br>For less optimistic between us.(?)
+{{{
+ +---------+----------+-------------+------------|--------------+
+ | Feature | Total TC | Executed TC | Passed TC  | Coverage (%) |
+ +---------+----------+-------------+------------|--------------+
+ |   DB    |   130    |    103      |    100     |      77      |
+ +---------+----------+-------------+---------------------------+
+ |  GUI    |   200    |    200      |     20     |      10      |
+ +---------+----------+-------------+---------------------------+
+ |  CLI    |    50    |      1      |      0     |       0      |
+ +---------+----------+-------------+---------------------------+
+}}}
+ * *Showstopper*. Showstopper is test case ID where upon its failure, the whole test scenario will stop.
+ * *Dependency on failure*. Lets say, test case 2 depend on failure of test case 1. If test case 1 fail, test case 2 won't be executed and will report failure.
+ * Executing test cases/scenarios by given tag(s). 
  * Logical operations on tags (thanks, Blumzi). 
  {{{
  # ./sptf --run --test-tag (sanity and not regression) and (server or client)
  }}}
+ or
+{{{
+ # ./sptf --show-summary --test-tag (customer or acceptance)
+}}}
  * Executing test cases by given author.
- * Executing test cases by given tag(s).  
  * Allow certain number of failures in test scenario. Will overwrite the continuity option in test case.
  * Multiple ID test case dependency.
  * Show in which scenarios appears given test case.
@@ -71,14 +89,15 @@
 }}}
  * Execute random test cases based on shuffle family (tag in metadata). For example
  {{{
- # ./sptf --run --shuffle-family 1,4,3
+ # ./sptf --run --shuffle-family 1,4,3 --min 10 --max 20 --all-tests
  }}}
- will pick random test case from shuffle family 1 and execute, then random test case from shuffle family 2 and execute and so on. It's good when test cases in only certain groups of tests may be execute independently one from another. (I'm not sure about this) 
- * Maybe even to run several test cases from each shuffle family
+ will pick random test case from shuffle family 1 and execute, then random test case from shuffle family 2 and execute and so on 10 times.<br>It's good when test cases in only certain group of tests may be execute independently one from another. (I'm not sure about this) 
+ * Maybe even to run specific number of test cases/scenarios for each shuffle family
 {{{
- # ./sptf --run --shuffle-family 1:10,4:2,3:1024
+ # ./sptf --run --shuffle-family 1:10,4:2,3:1024 --all-tests
 }}}
- * Any environmental variable maybe import into the test environment. May be helpful for example with layered TAP diagnostics in Test Builder mode or for setting up logging layer.
+ will pick random 10 test cases from shuffle family 1 and execute them, then 2 test cases for shuffle family 4 and so on.
+ * Any environmental variable maybe import into the test environment. May be helpful for example<br>with layered TAP diagnostics in Test Builder mode or for setting up logging layer.
 {{{
  # ./sptf --run --test-id 1,2,3,4 --env-var DO_TRACE --env-var DEBUG_LEVEL=4
 }}}
