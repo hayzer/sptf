@@ -17,28 +17,29 @@
    ........
    TAP test results
    ........
- +---------+----------+-------------+--------------+
- | Feature | Total TC | Executed TC | Coverage (%) |
- +---------+----------+-------------+--------------+
- |   DB    |   130    |    103      |      79      |
- +---------+----------+-------------+--------------+
- |  GUI    |   200    |    200      |     100      |
- +---------+----------+-------------+--------------+
- |  CLI    |    50    |      1      |     0.2      |
- +---------+----------+-------------+--------------+
+# +---------+----------+-------------+--------------+
+# | Feature | Total TC | Executed TC | Coverage (%) |
+# +---------+----------+-------------+--------------+
+# |   DB    |   130    |    103      |      79      |
+# +---------+----------+-------------+--------------+
+# |  GUI    |   200    |    200      |     100      |
+# +---------+----------+-------------+--------------+
+# |  CLI    |    50    |      1      |     0.2      |
+# +---------+----------+-------------+--------------+
 }}}
  Maybe successful statistics should be part of the coverage.<br>For less optimistic between us.(?)
 {{{
- +---------+----------+-------------+------------|--------------+
- | Feature | Total TC | Executed TC | Passed TC  | Coverage (%) |
- +---------+----------+-------------+------------|--------------+
- |   DB    |   130    |    103      |    100     |      77      |
- +---------+----------+-------------+---------------------------+
- |  GUI    |   200    |    200      |     20     |      10      |
- +---------+----------+-------------+---------------------------+
- |  CLI    |    50    |      1      |      0     |       0      |
- +---------+----------+-------------+---------------------------+
+# +---------+----------+-------------+------------|--------------+
+# | Feature | Total TC | Executed TC | Passed TC  | Coverage (%) |
+# +---------+----------+-------------+------------|--------------+
+# |   DB    |   130    |    103      |    100     |      77      |
+# +---------+----------+-------------+---------------------------+
+# |  GUI    |   200    |    200      |     20     |      10      |
+# +---------+----------+-------------+---------------------------+
+# |  CLI    |    50    |      1      |      0     |       0      |
+# +---------+----------+-------------+---------------------------+
 }}}
+ The table output should be TAP compatible.
  * *Showstopper*. Showstopper is test case ID where upon its failure, the whole test scenario will stop.
  * *Dependency on failure*. Lets say, test case 2 depend on failure of test case 1. If test case 1 fail, test case 2 won't be executed and will report failure.
  * Executing test cases/scenarios by given tag(s). 
@@ -96,8 +97,9 @@
 {{{
  # ./sptf --run --shuffle-family 1:10,4:2,3:1024 --all-tests
 }}}
- will pick random 10 test cases from shuffle family 1 and execute them, then 2 test cases for shuffle family 4 and so on.
- * Any environmental variable maybe import into the test environment. May be helpful for example<br>with layered TAP diagnostics in Test Builder mode or for setting up logging layer.
+ will pick random 10 test cases from shuffle family 1 and execute them, then 2 test cases for shuffle family 4 and so on. 
+ * Current meta-scenario syntax is not build for the *shuffle* stuff. Fix it.
+ * Any environmental variable maybe import into the test environment. May be helpful for example<br>with layered TAP diagnostics in Test Builder mode or for setting up logging layers.
 {{{
  # ./sptf --run --test-id 1,2,3,4 --env-var DO_TRACE --env-var DEBUG_LEVEL=4
 }}}
