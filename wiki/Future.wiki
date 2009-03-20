@@ -106,5 +106,15 @@
  * Test scenario will support continuity option.
  * Show all test cases/scenarios belongs to given author.
  * Check if the method belongs to the class before it's execute.
+ * *Test duration*. Each test case will have the metadata tag - _duration_. If so, *SPTF* will be able to supply several services.<br>
+{{{
+ # ./sptf --show-duration --scenario-id 1
+ This scenario will durate 15min, 45sec.
+}}}
+ or
+{{{
+ # ./sptf --run --shuffle --all-tests --no-longer-then 30min
+}}}
+ will execute random number of test cases with total runtime less then 30min. 
  
 Some ideas here may oppose one to another. Maybe each one will have its importancy level, to avoid conflicts.
