@@ -10,6 +10,14 @@
  * Database to archive test results. (I'm not sure about this now).
  * 'quiet' option for the test session. No test results goes to the output. Only return code.
  * Configurable timeout for each test case.
+ * Count time for each test case
+{{{
+ # ./sptf --run --scenario-id 10 --total-tc-time
+ ok - [1] my great test 
+ # Total time TC[1]: 0:12:34.402
+ ok - [2] my other test
+ # Total time TC[2]: 0:00:01.321
+}}}
  * *Failure reaction*. Configurable option to execute additional operation when test case failed. (_onfailure_ tag)
  * *Coverage*. New tag in metadata - feature. I assume that running all tests with given feature will<br>give 100% coverage for this feature. Disputable, but currently I like the idea.
 {{{
@@ -55,6 +63,10 @@
  * Allow certain number of failures in test scenario. Will overwrite the continuity option in test case.
  * Multiple ID test case dependency.
  * Show in which scenarios appears given test case.
+{{{
+ # ./sptf --show-scenario --test-id 102
+ TC[102] appears in scenarios: 1,15,23
+}}}
  * Execute given program before running the test, quit the test if pre program failed (sic?)
 {{{
  # ./sptf --run --pre-test pre/create-env.pl --scenario-id 1
@@ -105,11 +117,19 @@
 }}}
  * Test scenario will support continuity option.
  * Show all test cases/scenarios belongs to given author.
- * Check if the method belongs to the class before it's execute.
+{{{
+ # ./sptf --show-tests --author me
+# +--------+-------------------------------+
+# | Author | Test ID                       |
+# +--------+-------------------------------+
+# | me     | 1,2,3,4,5,19,20,44,100,230,23 |
+# +--------+-------------------------------+
+}}}
+ * Check if the method belongs to the class before it's execute. Report TAP on failure.
  * *Test duration*. Each test case will have the metadata tag - _duration_. If so, *SPTF* will be able to supply several services.<br>
 {{{
  # ./sptf --show-duration --scenario-id 1
- This scenario will durate 15min, 45sec.
+ This scenario will durate: 0:31:44.302
 }}}
  or
 {{{
