@@ -136,5 +136,16 @@
  # ./sptf --run --shuffle --all-tests --no-longer-then 30min
 }}}
  will execute random number of test cases with total runtime less then 30min. 
+ * Show all bugs and the TC ids they belongs to
+{{{
+ # ./sptf --show-all-bugs
+# +-------+---------+
+# | Bug   | Test ID |
+# +-------+---------+
+# | 00123 |   1     |
+# +-------+---------+
+# | 00442 |  107    |
+# +-------+---------+
+}}}
  
 Some ideas here may oppose one to another. Maybe each one will have its importancy level, to avoid conflicts.
