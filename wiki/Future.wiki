@@ -49,7 +49,7 @@
 }}}
  The table output should be TAP compatible.
  * *Showstopper*. Showstopper is test case ID where upon its failure, the whole test scenario will stop.
- * *Dependency on failure*. Lets say, test case 2 depend on failure of test case 1. If test case 1 fail, test case 2 won't be executed and will report failure.
+ * *Dependency on failure*. Lets say, test case 2 depend on failure of test case 1. If test case 1 fail, test case 2 won't be executed and will report failure. Array of test cases should be supported.
  * Executing test cases/scenarios by given tag(s). 
  * Logical operations on tags (thanks, Blumzi). 
  {{{
