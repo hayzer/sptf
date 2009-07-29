@@ -146,7 +146,10 @@
 # +-------+---------+
 # | 00442 |  107    |
 # +-------+---------+
-* Show TC id for given bug ID
+}}}
+
+ * Show TC id for given bug ID
+{{{
  # ./sptf --show-tc-id --bud-id 00442
 # +-------+---------+
 # | Bug   | Test ID |
