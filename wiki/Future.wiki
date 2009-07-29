@@ -152,5 +152,6 @@
  # ./sptf --run --scenario 1 --dont-run 20,23,38
 }}}
  will execute test scenario 1 but without test cases 20,23,38
+ * Goto given TC upon the failure of TC in while running TS. No test plan should be used. Tag in metadata: goto: 30. If TC failed, next executed TC will have ID 30
 
 Some ideas here may oppose one to another. Maybe each one will have its importancy level, to avoid conflicts.
