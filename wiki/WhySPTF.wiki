@@ -22,7 +22,7 @@ Because I can.
 
 == Why SPTF is NOT good for me ? ==
  * I already have 10000 test cases.
- * My testing code is written in Perl and in OO way.
+ * My testing code is written in Perl and in OO way (although Sub::Exporter or Class::Exporter may solve this limitation)
  * I think that creating and maintaining additional information about each test case is an overkill task.
  * I already manage my tests information using other software.
  * I don't know yet, but I'll find something.
