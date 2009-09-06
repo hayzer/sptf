@@ -6,7 +6,7 @@
  * Split more code into subroutines. One day SPTF will became a class maybe.
  * Split current help into short help and more verbose man.
  * Method parameters within metadata should be any data structure and not only array (damn!).
- * *Plugin capability*. Load dynamically module to do something with the executed test<br>entity (case,scenario,test result) or maybe some other stuff as well. I don't know yet, but it sounds cool.
+ * *Plugin capability*. Load dynamically module to do something with the executed test<br>entity (case,scenario,test result) or maybe some other stuff as well. Thus all fancy presentation and execution methods may use CPAN modules but the core (basic usage) still will be clean of them.
  * Database to archive test results. (I'm not sure about this now).
  * 'quiet' option for the test session. No test results goes to the output. Only return code.
  * Configurable timeout for each test case.
