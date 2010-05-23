@@ -10,7 +10,26 @@
  * Database to archive test results. (I'm not sure about this now).
  * 'quiet' option for the test session. No test results goes to the output. Only return code.
  * Configurable timeout for each test case.
- * Stash mechanism for Perl based test cases.
+ * Stash mechanism for Perl based test cases. Currently the first parameter passed to the test case is TC summary from the metadata.<br>I want to replace it with Catalyst 'like' stash mechanism. Thus the first parameter passed to the TC method will be a hashref.
+{{{
+sub test_case {
+   my ($stash,$parameters) = @_;
+}
+}}}
+ <br>Its default value will be the test case details, so one will be able to use them as will in the test case code.
+{{{
+print Dump $stash;
+# $HASH1 = {
+  id => 102,
+  summary => "This is my test case summary",
+  tags => [
+     'sanity',
+     'regression',
+  ],
+  etc`,
+}
+}}}
+  <br>But it can take with also any data to be passed to the other TC.
  * Count time for each test case
 {{{
  # ./sptf --run --scenario-id 10 --total-tc-time
